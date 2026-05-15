@@ -12,6 +12,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+import javafx.scene.control.Label;
 
 public class HelloController {
     @FXML
@@ -26,6 +27,8 @@ public class HelloController {
     private DatePicker dateFrom, dateTo;
     @FXML
     private ComboBox<String> sortPicker;
+
+    @FXML private Label status1, status2, status3;
 
     private final List<Person> allData = Collections.synchronizedList(new ArrayList<>());
     private final ObservableList<Person> observableList = FXCollections.observableArrayList();
@@ -51,8 +54,10 @@ public class HelloController {
         allData.clear();
         observableList.clear();
 
+        Label[] statuses = {status1, status2, status3};
+
         for (int i = 1; i <= 3; i++) {
-            DataLoading task = new DataLoading(i, allData, observableList);
+            DataLoading task = new DataLoading(i, allData, observableList, statuses[i-1]);
             new Thread(task).start();
         }
     }

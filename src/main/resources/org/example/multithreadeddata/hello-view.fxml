@@ -1,16 +1,110 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.VBox?>
-
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-      fx:controller="org.example.multithreadeddata.HelloController">
-    <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-    </padding>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-    <Label fx:id="welcomeText"/>
-    <Button text="Hello!" onAction="#onHelloButtonClick"/>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label prefHeight="43.0" prefWidth="331.0" text="CSV file's  data review">
+         <font>
+            <Font size="35.0" />
+         </font>
+         <VBox.margin>
+            <Insets bottom="30.0" left="30.0" top="20.0" />
+         </VBox.margin>
+      </Label>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="407.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="163.0" text="Date from:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="30.0" />
+                     </VBox.margin>
+                  </Label>
+                  <DatePicker fx:id="dateFrom" prefHeight="38.0" prefWidth="328.0">
+                     <VBox.margin>
+                        <Insets left="30.0" top="10.0" />
+                     </VBox.margin>
+                  </DatePicker>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="371.0">
+               <children>
+                  <Label prefHeight="26.0" prefWidth="163.0" text="Date to:">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </Label>
+                  <DatePicker fx:id="dateTo" prefHeight="38.0" prefWidth="328.0" />
+               </children>
+            </VBox>
+            <Button fx:id="filterButton" mnemonicParsing="false" onAction="#handleFilterByDate" prefHeight="39.0" prefWidth="195.0" text="Filter">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets top="35.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="65.0" prefWidth="1000.0">
+         <children>
+            <ComboBox fx:id="sortPicker" prefHeight="40.0" prefWidth="706.0">
+               <HBox.margin>
+                  <Insets left="30.0" top="10.0" />
+               </HBox.margin>
+            </ComboBox>
+            <Button fx:id="sortButton" mnemonicParsing="false" onAction="#handleSort" prefHeight="39.0" prefWidth="195.0" text="Sort">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="40.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <HBox prefHeight="37.0" prefWidth="1000.0">
+         <children>
+            <Button fx:id="loadDataButton" mnemonicParsing="false" onAction="#handleStartLoading" prefHeight="39.0" prefWidth="195.0" text="Load Data">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="30.0" top="10.0" />
+               </HBox.margin>
+            </Button>
+         </children>
+      </HBox>
+      <TableView prefHeight="353.0" prefWidth="940.0">
+        <columns>
+          <TableColumn fx:id="idCol" prefWidth="50.420644760131836" text="ID" />
+          <TableColumn fx:id="nameCol" prefWidth="99.57933807373047" text="NAME" />
+            <TableColumn fx:id="surnameCol" prefWidth="200.27420043945312" text="SURNAME" />
+            <TableColumn fx:id="emailCol" prefWidth="163.22586059570312" text="EMAIL" />
+            <TableColumn fx:id="countryCol" prefWidth="193.53094482421875" text="COUNTRY" />
+            <TableColumn fx:id="birthDateCol" prefWidth="231.1016845703125" text="BIRTH DATE" />
+        </columns>
+         <VBox.margin>
+            <Insets left="30.0" right="30.0" top="20.0" />
+         </VBox.margin>
+      </TableView>
+   </children>
 </VBox>

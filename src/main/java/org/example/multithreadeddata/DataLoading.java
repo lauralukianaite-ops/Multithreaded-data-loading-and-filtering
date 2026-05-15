@@ -1,11 +1,11 @@
 package org.example.multithreadeddata;
 
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.util.ArrayList;
 import java.util.List;
 
 public class DataLoading implements Runnable{
@@ -23,10 +23,10 @@ public class DataLoading implements Runnable{
 
     @Override
     public void run(){
+        System.out.println("Thread number " + number + " started to load.");
         try(BufferedReader br = new BufferedReader(new FileReader(file))){
             String line;
             boolean isFirstLine = true;
-            int count = 0;
 
             while ((line = br.readLine()) != null){
                 if(isFirstLine){
@@ -35,11 +35,17 @@ public class DataLoading implements Runnable{
                 }
 
                 Person = parseCsvLine(line);
+                if(person != null){
+                    personList.add(person);
+
+                    Platform.runLater(() -> {observableList.add(person);});
+
+                    Thread.sleep(20);
+                }
             }
+            System.out.println("Thread number " + number + " have just loaded.");
+        } catch (Exception e) {
+            System.err.println("Error in thread " + number + ": " + e.getMessage());
         }
-
-
     }
-
-
 }

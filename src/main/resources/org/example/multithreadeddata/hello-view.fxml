@@ -11,8 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.multithreadeddata.HelloController">
    <children>
       <Label prefHeight="43.0" prefWidth="331.0" text="CSV file's  data review">
          <font>
@@ -93,14 +92,16 @@
             </Button>
          </children>
       </HBox>
-      <TableView prefHeight="353.0" prefWidth="940.0">
+      <TableView fx:id="tableView" prefHeight="353.0" prefWidth="940.0">
         <columns>
           <TableColumn fx:id="idCol" prefWidth="50.420644760131836" text="ID" />
           <TableColumn fx:id="nameCol" prefWidth="99.57933807373047" text="NAME" />
-            <TableColumn fx:id="surnameCol" prefWidth="200.27420043945312" text="SURNAME" />
-            <TableColumn fx:id="emailCol" prefWidth="163.22586059570312" text="EMAIL" />
-            <TableColumn fx:id="countryCol" prefWidth="193.53094482421875" text="COUNTRY" />
-            <TableColumn fx:id="birthDateCol" prefWidth="231.1016845703125" text="BIRTH DATE" />
+            <TableColumn fx:id="surnameCol" prefWidth="117.78141784667969" text="SURNAME" />
+            <TableColumn fx:id="emailCol" prefWidth="122.71856689453125" text="EMAIL" />
+            <TableColumn fx:id="genderCol" prefWidth="109.06283569335938" text="GENDER" />
+            <TableColumn fx:id="countryCol" prefWidth="122.4371337890625" text="COUNTRY" />
+            <TableColumn fx:id="domainCol" prefWidth="183.15533447265625" text="DOMAIN" />
+            <TableColumn fx:id="birthDateCol" prefWidth="133.5" text="BIRTH DATE" />
         </columns>
          <VBox.margin>
             <Insets left="30.0" right="30.0" top="20.0" />

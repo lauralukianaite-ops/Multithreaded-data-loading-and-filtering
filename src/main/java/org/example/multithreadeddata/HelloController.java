@@ -19,7 +19,7 @@ public class HelloController {
     @FXML
     private TableColumn<Person, Long> idCol;
     @FXML
-    private TableColumn<Person, String> nameCol, surnameCol, emailCol, countryCol;
+    private TableColumn<Person, String> nameCol, surnameCol, emailCol, genderCol, countryCol, domainCol;
     @FXML
     private TableColumn<Person, LocalDate> birthDateCol;
     @FXML
@@ -36,12 +36,14 @@ public class HelloController {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         surnameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        genderCol.setCellValueFactory(new PropertyValueFactory<>("gender"));
         countryCol.setCellValueFactory(new PropertyValueFactory<>("country"));
+        domainCol.setCellValueFactory(new PropertyValueFactory<>("domain"));
         birthDateCol.setCellValueFactory(new PropertyValueFactory<>("birthDate"));
 
         tableView.setItems(observableList);
 
-        sortPicker.getItems().addAll("Name A-Z", "Name Z-A", "ID Growing", "ID Descreasing", "Birth Date");
+        sortPicker.getItems().addAll("Name A-Z", "Name Z-A", "ID increasingly", "ID decreasingly", "Birth Date");
     }
 
     @FXML
@@ -86,12 +88,12 @@ public class HelloController {
                         .sorted(Comparator.comparing(Person::getFirstName).reversed())
                         .collect(Collectors.toList());
                 break;
-            case "ID Growing":
+            case "ID increasingly":
                 sorted = observableList.stream()
                         .sorted(Comparator.comparingLong(Person::getId))
                         .collect(Collectors.toList());
                 break;
-            case "ID Decreasing":
+            case "ID decreasingly":
                 sorted = observableList.stream()
                         .sorted(Comparator.comparingLong(Person::getId).reversed())
                         .collect(Collectors.toList());

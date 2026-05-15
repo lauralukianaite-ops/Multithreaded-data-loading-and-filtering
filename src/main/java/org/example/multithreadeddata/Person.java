@@ -48,7 +48,7 @@ public class Person {
     }
 
     public String getDomain(){
-        return gender;
+        return domain;
     }
 
     public LocalDate getBirthDate(){
